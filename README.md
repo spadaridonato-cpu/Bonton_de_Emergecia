@@ -1,4 +1,4 @@
-# Bonton_de_Emergecia
+# Bonton_de_Emergecia_para_Kayakistas
 
 # Descripción
 Un sistema de alerta de emergencia inalámbrico de largo alcance diseñado para deportes acuáticos como el kayak.
