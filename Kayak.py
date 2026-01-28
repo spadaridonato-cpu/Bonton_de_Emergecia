@@ -11,9 +11,9 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-sistema_activo = False   # Estado global del sistema
+sistema_activo = False
 
-# ===== INTENTAR ABRIR PUERTO SERIAL =====
+# ABRIR PUERTO SERIAL
 try:
     puerto = serial.Serial("COM8", 115200, timeout=1)
 except serial.SerialException:
@@ -22,7 +22,7 @@ except serial.SerialException:
     messagebox.showerror("Error", "No se detecta el receptor en COM8.\nConéctelo y vuelva a abrir el programa.")
     raise SystemExit  # salir del programa limpio
 
-# ======= RECEPCIÓN (de los emisores) =======
+# RECEPCIÓN (de los emisores)
 def procesar_mensaje(mensaje):
     if "No hay FIX" in mensaje or "GPS sin FIX" in mensaje:
         return  
@@ -45,7 +45,7 @@ def procesar_mensaje(mensaje):
         if mensaje.strip():
             print("Mensaje desconocido:", mensaje)
 
-# ======= ENVÍO (hacia los emisores) =======
+# ENVÍO (hacia los emisores)
 @app.route("/api/enviar_mensaje", methods=["POST"])
 def enviar_mensaje():
     data = request.json
@@ -63,7 +63,7 @@ def enviar_mensaje():
 
     return jsonify({"ok": True, "enviado": paquete})
 
-# ======= LOOP ESCUCHA =======
+# LOOP ESCUCHA
 def iniciar_lector():
     def loop():
         global sistema_activo
@@ -74,7 +74,7 @@ def iniciar_lector():
                     procesar_mensaje(mensaje)
     threading.Thread(target=loop, daemon=True).start()
 
-# ======= INTERFAZ TKINTER =======
+# INTERFAZ TKINTER
 def toggle_sistema():
     global sistema_activo
     sistema_activo = not sistema_activo
@@ -94,8 +94,9 @@ tk.Label(ventana, textvariable=estado, font=("Arial", 14, "bold")).pack(pady=5)
 boton = tk.Button(ventana, text="Prender", font=("Arial", 12), command=toggle_sistema)
 boton.pack(pady=10)
 
-# ===== MAIN =====
+# MAIN
 if __name__ == "__main__":
     iniciar_lector()
     threading.Thread(target=lambda: app.run(port=5000, debug=False, use_reloader=False), daemon=True).start()
     ventana.mainloop()
+
