@@ -1,4 +1,4 @@
-# Bonton_de_Emergecia_para_Kayakistas
+# Bonton_de_Emergecia_para_Kayakistas (B.E.K)
 
 # Descripción
 Un sistema de alerta de emergencia inalámbrico de largo alcance diseñado para deportes acuáticos como el kayak.
