@@ -22,5 +22,3 @@ Al pulsarlo:
 4. Se genera una alerta en el ordenador.
 
 Esto permite la señalización de emergencia incluso en zonas sin cobertura móvil.
-
-## 📡 Arquitectura del sistema
