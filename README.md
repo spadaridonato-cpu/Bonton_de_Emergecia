@@ -16,9 +16,9 @@ Al pulsar un botón, un dispositivo ESP32 LoRa transmite una señal de socorro a
 El dispositivo portátil contiene un botón conectado a un módulo ESP32 LoRa.
 
 Al pulsarlo:
-1. El ESP32 envía un paquete LoRa inalámbrico.
-2. Una estación receptora captura la señal.
-3. Una aplicación Python procesa el mensaje.
-4. Se genera una alerta en el ordenador.
+1. El ESP32 envía un paquete LoRa inalámbrico, este contiene un mensaje con las coordenadas tomadas por el GPS del ESP32.
+2. Una estación receptora captura la señal con el otro dispositivo, este conectado a la computadora.
+3. Una aplicación Python procesa el mensaje que fue enviado anteriormente por monitor serie.
+4. Se genera una alerta en la computadora, marcando en un mapa la ubicación exacta del civil.
 
 Esto permite la señalización de emergencia incluso en zonas sin cobertura móvil.
